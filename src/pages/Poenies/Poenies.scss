@@ -1,0 +1,181 @@
+:root {
+  --base-size: 250px;
+  --base-height: 173px;
+}
+
+.container-poenies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left:500px;
+}
+
+* {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+main {
+  transform-style: preserve-3d;
+  transform: translateX(-400px) translateZ(-600px);
+}
+
+main > .flower {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 500px;
+  background-color: olive;
+  transform-origin: 90% center;
+
+  @for $i from 1 through 8 {
+    --d: 138px;
+
+    &:nth-child(#{$i}) {
+      transform-origin: 90% center;
+      transform: rotateY(#{$i * 1/8}turn)
+        rotateX(180deg)
+        translateX(-100px)
+        rotateZ(30deg);
+    }
+  }
+
+  @for $i from 1 through 5 {
+    --d: 138px;
+
+    &:nth-child(#{$i + 8}) {
+      transform: rotateY(#{$i * 1/3}turn)
+        translateZ(-50px)
+        rotateX(180deg)
+        translateX(150px)
+        translateY(100px)
+        rotateZ(15deg);
+    }
+  }
+}
+
+.triangle {
+  transform-origin: top;
+  position: absolute;
+  width: var(--base-size);
+  height: var(--base-height);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  background: linear-gradient(
+    0deg,
+    rgb(219, 44, 146) 0%,
+    rgb(131, 22, 89) 100%
+  );
+
+  @for $i from 1 through 5 {
+    --d: 150px;
+
+    &:nth-child(#{$i}) {
+      transform: rotateY(#{$i * 1/5}turn) translateZ(var(--d)) rotateX(-127deg);
+    }
+
+    &:nth-child(#{$i + 5}) {
+      transform: rotateY(#{$i * 1/5}turn) translateZ(var(--d)) rotateX(11deg);
+    }
+
+    &:nth-child(#{$i + 10}) {
+      transform: translateX(20px)
+        rotateY(#{$i * 1/5 + 1/10}turn)
+        translateZ(calc(var(--d) / 5 * 4))
+        rotateX(11deg);
+      width: calc(var(--base-size) / 10 * 8);
+      height: var(--base-height);
+    }
+
+    &:nth-child(#{$i + 15}) {
+      transform: translateX(20px)
+        rotateY(#{$i * 1/5 + 1/10}turn)
+        translateZ(calc(var(--d) / 5 * 4))
+        rotateX(-127deg);
+      width: calc(var(--base-size) / 10 * 8);
+      height: calc(var(--base-height) / 10 * 8);
+    }
+
+    &:nth-child(#{$i + 20}) {
+      transform: translateX(30px)
+        rotateY(#{$i * 1/5 + 4/10}turn)
+        translateZ(calc(var(--d) / 5 * 3))
+        rotateX(11deg);
+      width: calc(var(--base-size) / 10 * 6);
+      height: var(--base-height);
+    }
+
+    &:nth-child(#{$i + 25}) {
+      transform: translateX(30px)
+        rotateY(#{$i * 1/5 + 4/10}turn)
+        translateZ(calc(var(--d) / 5 * 3))
+        rotateX(-127deg);
+      width: calc(var(--base-size) / 10 * 6);
+      height: calc(var(--base-height) / 10 * 6);
+    }
+
+    &:nth-child(#{$i + 30}) {
+      transform: translateX(50px)
+        rotateY(#{$i * 1/5 + 6/10}turn)
+        translateZ(calc(var(--d) / 5 * 2))
+        rotateX(11deg);
+      width: calc(var(--base-size) / 10 * 4);
+      height: var(--base-height);
+    }
+
+    &:nth-child(#{$i + 35}) {
+      transform: translateX(50px)
+        rotateY(#{$i * 1/5 + 6/10}turn)
+        translateZ(calc(var(--d) / 5 * 2))
+        rotateX(-127deg);
+      width: calc(var(--base-size) / 10 * 4);
+      height: calc(var(--base-height) / 10 * 4);
+    }
+
+    &:nth-child(#{$i + 40}) {
+      transform: translateX(70px)
+        rotateY(#{$i * 1/5 + 8/10}turn)
+        translateZ(calc(var(--d) / 5))
+        rotateX(11deg);
+      width: calc(var(--base-size) / 10 * 2);
+      height: var(--base-height);
+    }
+
+    &:nth-child(#{$i + 45}) {
+      transform: translateX(70px)
+        rotateY(#{$i * 1/5 + 8/10}turn)
+        translateZ(calc(var(--d) / 5))
+        rotateX(-127deg);
+      width: calc(var(--base-size) / 10 * 2);
+      height: calc(var(--base-height) / 10 * 2);
+    }
+  }
+}
+
+.stalk > div {
+  --height: 1000px;
+  width: 50px;
+  height: var(--height);
+  transform-origin: top;
+  position: absolute;
+  background-color: green;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+  @for $i from 1 through 3 {
+    --d: 15px;
+
+    &:nth-child(#{$i}) {
+      transform: translateX(75px)
+        translateY(calc((var(--height) + 50px) * -1))
+        rotateY(#{$i * 1/3}turn)
+        translateZ(14.5px)
+        rotateX(-1.2deg);
+    }
+  }
+}
+
+#back-button-poenies{
+  position: fixed;
+    top: 10px;
+    left: 10px;
+    // margin: 0;
+}
